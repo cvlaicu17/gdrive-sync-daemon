@@ -12,7 +12,7 @@ install -m 644 "$HERE"/systemd/gdrive-sync.{service,timer} ~/.config/systemd/use
 
 # shellcheck disable=SC1090
 source ~/.config/gdrive-sync/config.env
-remote_name="${REMOTE%%:*}"
+remote_name="${REMOTE%%[:,]*}"   # handles "remote:path" and "remote,root_folder_id=ID:"
 rclone listremotes | grep -qx "$remote_name:" || { echo "rclone remote '$remote_name' not configured. Run: rclone config"; exit 1; }
 
 # First run only: build bisync listings (copies in both directions, never deletes).
