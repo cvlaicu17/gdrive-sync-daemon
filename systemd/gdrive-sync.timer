@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Google Drive sync every 2 minutes
+
+[Timer]
+OnBootSec=1min
+# Counted from when the previous run FINISHED, so runs can never pile up.
+OnUnitInactiveSec=2min
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target

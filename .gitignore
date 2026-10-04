@@ -1,0 +1,6 @@
+rclone.conf
+*.env
+!config.env.example
+*.token
+*.tar.gz
+*.log
